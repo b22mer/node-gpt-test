@@ -11,7 +11,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
-app.get('/fortune', async function (req, res) {
+app.post('/fortune', async function (req, res) {
  
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -29,11 +29,11 @@ app.get('/fortune', async function (req, res) {
     res.json({"assistant": fortune});
 })
 
-app.listen(3000)
+app.listen(3001)
 
 
 const configuration = new Configuration({
-  apiKey: process.env.REACT_APP_CHAT_GPT_API,
+  apiKey: ""
 });
 const openai = new OpenAIApi(configuration);
 
